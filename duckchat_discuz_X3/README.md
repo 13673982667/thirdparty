@@ -43,8 +43,8 @@ WQIDAQAB
 
 2. 管理后代 》 小程序管理 》小程序序列表 》 选中自己添加的小程序，查看ID
 
-3. 修改站点数据库siteConfig表中的configValue为小程序ID
-   * 106请换成自己的loginPluginId
+3. 修改站点数据库siteConfig表中的loginPluginId的值为小程序ID
+    * 106请换成自己的loginPluginId
    
    			update siteConfig set configValue=106 where configKey='loginPluginId';
    		
