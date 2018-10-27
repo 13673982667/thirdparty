@@ -3,7 +3,7 @@
 ## 产品说明
 在现有的账户体系下，快速的接入使用duckchat源码搭建的站点。
 
-## discuz(X2.5_php7.0特别版) 文档接入说明
+## discuz(X2.5_php7.0) 文档接入说明
 
 ### disucz 文件添加
 1. 将下载的duckchatDiscuz文件夹放到discuz根目录中, 用文件夹中的文件替换原有文件
@@ -56,15 +56,12 @@ WQIDAQAB
 	* 106 替换成自己的loginPluginId, 
 	* 地址替换成自己的真实地址
 
-5. 将discuz登录的用户，设置为站点管理员
-
-	* 找到自己的想设置为管理员的userId
-		
-			select userId, loginName  from siteUser;
+5. 将discuz登录的用户，设置为站长
 	
-	* 将userId设置为管理员，(configValue请替换为正确的值)
+	* 手动执行下面语句， XXXXXX 为discuz的登录名
 			
-			update siteConfig set configValue='xx_xx_ba2'  where configKey='managers';
+		update siteConfig set configValue = (select userId from siteUser where loginName='XXXXXX') where siteConfig.configKey='owner';
+
 
 ### 特别说明
 * discuz 暂时不能开启手机模式，会导致注入js失败
