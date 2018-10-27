@@ -10,7 +10,7 @@
 		
 2. 将正确的公钥写到plugin/duckchat/sitePubk.pem文件中
 	
-	* duckchat app端 首页 > 管理后台 > 站点设置 > 站点公钥 
+	* duckchat app端 首页 > 管理后台 > 站点设置 > 站点公钥 (如果不能复制，可以直接查库 select configValue  from siteConfig where configKey='sitePubkPem';)
 
 ``` 
 -----BEGIN PUBLIC KEY-----
@@ -43,7 +43,7 @@ WQIDAQAB
 
 2. 管理后代 》 小程序管理 》小程序序列表 》 选中自己添加的小程序，查看ID
 
-3. 修改数据库siteConfig表中的configValue为小程序ID
+3. 修改站点数据库siteConfig表中的configValue为小程序ID
    * 106请换成自己的loginPluginId
    
    			update siteConfig set configValue=106 where configKey='loginPluginId';
