@@ -29,7 +29,7 @@ WQIDAQAB
 
 		<script type="text/javascript" src="{$_G[setting][jspath]}zalyjsNative.js?{VERHASH}"></script>
 
-4. 添加完成后，清空discuz缓存
+4. 清空discuz缓存
 
 5. 在discuz 后台管理 》 应用 》 插件中，安装, 启动duckchat插件
 
