@@ -6,7 +6,7 @@
 ## discuz(X2.5_php7.0) 文档接入说明
 
 ### disucz 文件添加
-1. 将下载的duckchatDiscuz文件夹放到discuz根目录中, 用文件夹中的文件替换原有文件
+1. 下载的duckchatDiscuz文件夹, 并且把文件夹或者文件，移动到source相应的目录中，
 		
 2. 将正确的公钥写到plugin/duckchat/sitePubk.pem文件中
 	
@@ -29,7 +29,9 @@ WQIDAQAB
 
 		<script type="text/javascript" src="{$_G[setting][jspath]}zalyjsNative.js?{VERHASH}"></script>
 
-4. 在discuz 后台管理 》 应用 》 插件中，安装, 启动duckchat插件
+4. 清空discuz缓存
+
+5. 在discuz 后台管理 》 应用 》 插件中，安装, 启动duckchat插件
 
 ### 站点修改(duckchat app端操作)
 
