@@ -25,13 +25,17 @@ WQIDAQAB
 
 ```
 
-3. template/ 使用的模板 common文件夹中的header_common.html 最下方添加
+3. 网页端 template/ 使用的模板 common文件夹中的header_common.htm 最下方添加
 
 		<script type="text/javascript" src="{$_G[setting][jspath]}zalyjsNative.js?{VERHASH}"></script>
 
-4. 清空discuz缓存
+4. 手机端 template/ 使用的模板 mobile/common文件夹中的header.htm "</head>"之前添加
 
-5. 在discuz 后台管理 》 应用 》 插件中，安装, 启动duckchat插件
+    <script type="text/javascript" src="{$_G[setting][jspath]}zalyjsNative.js?{VERHASH}"></script>
+
+5. 清空discuz缓存
+
+6. 在discuz 后台管理 》 应用 》 插件中，安装, 启动duckchat插件
 
 ### 站点修改(duckchat app端操作)
 
@@ -58,13 +62,15 @@ WQIDAQAB
 	* 106 替换成自己的loginPluginId, 
 	* 地址替换成自己的真实地址
 
-5. 将discuz登录的用户，设置为站长
+5. 测试discuz插件 duckchat是否生效, 在浏览器访问上述地址，是否有值打印出
+	
+		例如 http://192.168.3.152:8072/plugin.php?id=duckchat&action=api.session.verify&body_format=base64pb
+
+		EuA/CjV0eXBlLmdvb2dsZWFwaXMuY29t...
+
+6. 将discuz登录的用户，设置为站长
 	
 	* 手动执行下面语句， XXXXXX 为discuz的登录名
 			
 		update siteConfig set configValue = (select userId from siteUser where loginName='XXXXXX') where siteConfig.configKey='owner';
-
-
-### 特别说明
-* discuz 暂时不能开启手机模式，会导致注入js失败
 

@@ -195,7 +195,7 @@ class logging_duckchat {
                 loginfailed($_GET['username']);
                 $fmsg = $result['ucresult']['uid'] == '-3' ? (empty($_GET['questionid']) || $answer == '' ? 'login_question_empty' : 'login_question_invalid') : 'login_invalid';
                 if($_G['member_loginperm'] > 1) {
-                    $this->jumpToSite($_G['sid'], $fmsg, "", array('loginperm' => $_G['member_loginperm'] - 1));
+                    $this->jumpToSite($_G['sid'], $fmsg, "", array('loginperm' => $_G['member_loginperm'] - 1), "");
                 } elseif($_G['member_loginperm'] == -1) {
                     showmessage('login_password_invalid');
                 } else {
