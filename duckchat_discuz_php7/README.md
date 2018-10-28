@@ -74,3 +74,5 @@ WQIDAQAB
 			
 		update siteConfig set configValue = (select userId from siteUser where loginName='XXXXXX') where siteConfig.configKey='owner';
 
+### 特别说明
+* discuz论坛php版本不能低于5.5
