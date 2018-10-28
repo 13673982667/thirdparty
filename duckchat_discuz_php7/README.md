@@ -76,3 +76,4 @@ WQIDAQAB
 
 ### 特别说明
 * discuz论坛php版本不能低于5.5
+* 如果discuz论坛开启了https，站点也需要开席https
