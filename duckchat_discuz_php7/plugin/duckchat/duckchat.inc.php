@@ -100,7 +100,6 @@ class Duckchat
 
         } catch (Exception $e) {
             $error = sprintf("shaoye discuz parse proto error, format: %s, error: %s", $this->bodyFormatType, $e->getMessage());
-            error_log($tag, $error);
             // disabled the rpcReturn online.
             $this->setRpcError("error.proto.parse", $error);
             $this->rpcReturn($this->action, null);
@@ -138,7 +137,6 @@ class Duckchat
             $key = $zalyRsa->encrypt($loginUserProfileKey, $sitePubkPem);
             $zalyAes = new ZalyAes();
             $aesStr = $zalyAes->encrypt(serialize($userProfile), $loginUserProfileKey);
-            error_log("discuz site: api.session.verify proto profile=" . $userProfile->serializeToJsonString());
 
             $response = new \Zaly\Proto\Platform\ApiSessionVerifyResponse();
             $response->setKey($key);

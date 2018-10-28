@@ -25,7 +25,6 @@ WQIDAQAB
 
 ```
 
-
 3. 网页端 template/ 使用的模板 common文件夹中的header_common.htm 最下方添加
 
 		<script type="text/javascript" src="{$_G[setting][jspath]}zalyjsNative.js?{VERHASH}"></script>
@@ -62,7 +61,7 @@ WQIDAQAB
 	 
 	* 106 替换成自己的loginPluginId, 
 	* 地址替换成自己的真实地址
-	
+
 5. 测试discuz插件 duckchat是否生效, 在浏览器访问上述地址，是否有值打印出
 	
 		例如 http://192.168.3.152:8072/plugin.php?id=duckchat&action=api.session.verify&body_format=base64pb
