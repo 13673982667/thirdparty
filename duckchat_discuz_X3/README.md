@@ -29,7 +29,7 @@ WQIDAQAB
 
 		<script type="text/javascript" src="{$_G[setting][jspath]}zalyjsNative.js?{VERHASH}"></script>
 
-4. 手机端 template/ 使用的模板 touch/common文件夹中的header.htm 最下方添加
+4. 手机端 template/ 使用的模板 touch/common文件夹中的header.htm "</header>" 前面添加
 
     <script type="text/javascript" src="{$_G[setting][jspath]}zalyjsNative.js?{VERHASH}"></script>
 

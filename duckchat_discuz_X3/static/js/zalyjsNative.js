@@ -15,7 +15,8 @@ function getUrlParam(key)
     for(var i=0; i<paramsLength; i++) {
         var param = pathParams[i].split('=');
         if(param[0] == key) {
-            localStorage.setItem(refererUrlKey, param[1]);
+            var url = decodeURIComponent(param[1]);
+            localStorage.setItem(refererUrlKey, url);
         }
     }
 }
@@ -253,5 +254,22 @@ function zalyjsAlert(str)
         alert(str);
     } else {
         alert(str);
+    }
+}
+
+
+
+//-public
+function zalyjsImageUpload(callback) {
+    var callbackId = zalyjsCallbackHelper.register(callback);
+    var messageBody = {};
+    messageBody[callbackIdParamName] = callbackId;
+    messageBody = JSON.stringify(messageBody);
+
+    if (isAndroid()) {
+        window.Android.zalyjsImageUpload(messageBody);
+    } else if (isIOS()) {
+        console.log("ios upload image" + callback);
+        window.webkit.messageHandlers.zalyjsImageUpload.postMessage(messageBody);
     }
 }
