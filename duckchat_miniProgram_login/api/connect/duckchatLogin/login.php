@@ -111,15 +111,18 @@ class DuckchatLogin {
         $duckchatSessionId = $_COOKIE["duckchat_sessionid"];
         $userProfile = $duckchatUserProfile->getDuckChatUserProfileFromSessionId($duckchatSessionId, $miniProgramId);
         $loginName = $userProfile->getLoginName();
+        $loginPluginId = $userProfile->getLoginPluginId();
+        error_log("duckchat session profile ==== ==== ==== ==== ====".$loginPluginId);
+        error_log("config plugin Id  ==== ==== ==== ==== ====". $this->config['loginPluginId']);
+        if($loginPluginId == $this->config['loginPluginId']) {
+            $uid = C::t('common_member')->fetch_uid_by_username($loginName);
+            $member = getuserbyuid($uid);
 
-        $uid = C::t('common_member')->fetch_uid_by_username($loginName);
-        $member = getuserbyuid($uid);
-
-        if($member){
-            setloginstatus($member, 0);
+            if($member){
+                setloginstatus($member, 0);
+            }
         }
 
-        return $loginName;
     }
 }
 $config = require ("./api/connect/duckchatLogin/config.php");
@@ -127,7 +130,7 @@ $config = require ("./api/connect/duckchatLogin/config.php");
 try{
     $duckchatLogin = new DuckchatLogin($config);
 
-    $loginName = $duckchatLogin->getUserProfile();
+    $duckchatLogin->getUserProfile();
 
 }catch (Exception $ex) {
     error_log($ex);

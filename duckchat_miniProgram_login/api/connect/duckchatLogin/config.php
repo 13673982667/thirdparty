@@ -7,7 +7,11 @@
  */
 
 return [
-    "miniProgramId" => 110,
+    "miniProgramId" => 113,
+    "loginPluginId" => 107,
     "siteAddress" => "http://192.168.3.152",
-    "authKey"     => "I7tuMcRP6rkUgiDBKlLe6aYwXT9kHZiU",
+    "authKey"     => "eGvclS217rnrkdICENXJ1eZhhwuYkb0F",
 ];
+
+
+
