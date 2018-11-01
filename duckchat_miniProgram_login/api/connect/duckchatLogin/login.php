@@ -14,19 +14,10 @@
     getOsType();
 
     //-private
-    function zalyjsNavOpenPage(url) {
-        console.log("url======="+url);
-        var messageBody = {}
-        messageBody["url"] = url
-        messageBody = JSON.stringify(messageBody)
 
-        if (clientType == "Android") {
-            window.Android.zalyjsNavOpenPage(messageBody)
-        } else if (clientType == "IOS") {
-            window.webkit.messageHandlers.zalyjsNavOpenPage.postMessage(messageBody)
-        } else {
-            window.location.href = url;
-        }
+    //-public
+    function zalyjsOpenPage(url) {
+        location.href = url;
     }
 </script>
 
@@ -109,15 +100,13 @@ class DuckchatLogin {
         $duckchatUserProfile = new DuckchatUserProfile($this->config);
         $miniProgramId = $this->config['miniProgramId'];
         $duckchatSessionId = $_COOKIE["duckchat_sessionid"];
+
         $userProfile = $duckchatUserProfile->getDuckChatUserProfileFromSessionId($duckchatSessionId, $miniProgramId);
         $loginName = $userProfile->getLoginName();
         $loginPluginId = $userProfile->getLoginPluginId();
-        error_log("duckchat session profile ==== ==== ==== ==== ====".$loginPluginId);
-        error_log("config plugin Id  ==== ==== ==== ==== ====". $this->config['loginPluginId']);
         if($loginPluginId == $this->config['loginPluginId']) {
             $uid = C::t('common_member')->fetch_uid_by_username($loginName);
             $member = getuserbyuid($uid);
-
             if($member){
                 setloginstatus($member, 0);
             }
@@ -136,7 +125,7 @@ try{
     error_log($ex);
 }
 
-echo "<script type='text/javascript'>zalyjsNavOpenPage('./')</script>";
+echo "<script type='text/javascript'>zalyjsOpenPage('./')</script>";
 ?>
 
 

@@ -8,8 +8,8 @@
 
 return [
     "miniProgramId" => 113,
-    "loginPluginId" => 107,
-    "siteAddress" => "http://192.168.3.152",
+    "loginPluginId" => 111,
+    "siteAddress" => "https://192.168.3.152",
     "authKey"     => "eGvclS217rnrkdICENXJ1eZhhwuYkb0F",
 ];
 
