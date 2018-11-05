@@ -16,7 +16,7 @@
    * 添加在 『```  < span class="avatar">XXX</span>```』下面
     ``` 
         <!--{if (($_G['uid'] != $post['authorid']) && $post['siteUserId']) }-->
-            <span onclick="zalyjsGoto('u2Profile','{$post[siteUserId]}')"> 发起聊天</span>
+            <span style=' top: 50px;position: absolute; left: 10px; color: #0086CE; display: inline;'onclick="zalyjsGoto('u2Profile','{$post[siteUserId]}')"> 发起聊天</span>
         <!--{/if}-->
     ``` 
 
@@ -25,6 +25,17 @@
    * 添加在 『```  < span class="avatar">XXX</span>```』下面
    ``` 
     <!--{if (($_G['uid'] != $post['authorid']) && $post['siteUserId']) }-->
-             <span onclick="zalyjsGoto('u2Profile','{$post[siteUserId]}')"> 发起聊天</span>
+             <span style=' top: 50px;position: absolute; left: 10px; color: #0086CE; display: inline;' onclick="zalyjsGoto('u2Profile','{$post[siteUserId]}')"> 发起聊天</span>
             <!--{/if}-->
     ```
+
+4. 修改 default 》 forum 》 vierthread.html
+
+* 添加在 『```  <p class="cp_pls cl"> <a> </a>```』下面
+
+
+ ``` 
+      <!--{if (($_G['uid'] != $post['authorid']) && $post['siteUserId']) }-->
+          <a href="#" style='margin-top:5px;color: #0086CE; display: inline;'onclick="zalyjsGoto('u2Profile','{$post[siteUserId]}', '{$post[siteAddress]}')"> 发起聊天</a>
+          <!--{/if}-->
+ ```

@@ -660,8 +660,13 @@ if($hotpostarr || $sticklist) {
 
 $sitePubkPem = "";
 $siteUserId = "";
+$siteAddress = "";
 if(file_exists("./source/plugin/duckchat/sitePubk.pem")) {
     $sitePubkPem = file_get_contents("./source/plugin/duckchat/sitePubk.pem");
+}
+if(file_exists("./api/connect/duckchatLogin/config.php")) {
+    $config = require ("./api/connect/duckchatLogin/config.php");
+    $siteAddress = $config['siteAddress'];
 }
 
 foreach($postarr as $post) {
@@ -710,6 +715,7 @@ foreach($postarr as $post) {
         }
 
         $post['siteUserId'] = $siteUserId;
+        $post['siteAddress'] = $siteAddress;
 		$postlist[$post['pid']] = $post;
 	}
 }
