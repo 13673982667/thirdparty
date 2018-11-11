@@ -34,10 +34,9 @@ class logging_duckchat {
             $referer = dreferer();
             $ucsynlogin = $this->setting['allowsynlogin'] ? uc_user_synlogin($_G['uid']) : '';
             $param = array('username' => $_G['member']['username'], 'usergroup' => $_G['group']['grouptitle'], 'uid' => $_G['member']['uid']);
-//            $url_forward = $referer ? $referer : './';
-//            $extra =  array('showdialog' => 1, 'locationtime' => true, 'extrajs' => $ucsynlogin);
-//            $this->jumpToSite($_G, "login_succeed", $url_forward, $param, $extra);
-            showmessage('login_succeed', $referer ? $referer : './', $param, array('showdialog' => 1, 'locationtime' => true, 'extrajs' => $ucsynlogin));
+           $url_forward = $referer ? $referer : './';
+           $extra =  array('showdialog' => 1, 'locationtime' => true, 'extrajs' => $ucsynlogin);
+           $this->jumpToSite($_G, "login_succeed", $url_forward, $param, $extra);
         }
 
         list($seccodecheck) = seccheck('login');
@@ -83,7 +82,6 @@ class logging_duckchat {
             $loginhash = !empty($_GET['loginhash']) && preg_match('/^\w+$/', $_GET['loginhash']) ? $_GET['loginhash'] : '';
 
             if(!($_G['member_loginperm'] = logincheck($_GET['username']))) {
-                captcha::report($_G['clientip']);
                 showmessage('login_strike');
             }
             if($_GET['fastloginfield']) {
@@ -316,7 +314,7 @@ class logging_duckchat {
     function jumpToSite($_G, $loginmessage, $location, $param, $extra) {
         $duckchatCookie = isset($_COOKIE['duckchat']) ? $_COOKIE['duckchat'] : "";
         if($duckchatCookie == "duckchat") {
-            $js = '<script type="text/javascript">function loginFailed(){zalyjsAlert("login failed");} zalyjsLoginSuccess("'.$_G['username'].'", "'.$_G['sid'].'", true, loginFailed);</script>';
+            $js = '<script type="text/javascript">function loginFailed(){alert("login failed");} zalyjsLoginSuccess("'.$_G['username'].'", "'.$_G['sid'].'", true, loginFailed);</script>';
             showmessage('success, jump to site', '', array('type' => 1), array('extrajs' => $js));
             die();
         }
@@ -370,7 +368,7 @@ class register_duckchat {
     function jumpToSite($_G, $loginmessage, $location, $param, $extra) {
         $duckchatCookie = isset($_COOKIE['duckchat']) ? $_COOKIE['duckchat'] : "";
         if($duckchatCookie == "duckchat") {
-            $js = '<script type="text/javascript">function loginFailed(){zalyjsAlert("login failed");} zalyjsLoginSuccess("'.$_G['username'].'", "'.$_G['sid'].'", true, loginFailed);</script>';
+            $js = '<script type="text/javascript">function loginFailed(){alert("login failed");} zalyjsLoginSuccess("'.$_G['username'].'", "'.$_G['sid'].'", true, loginFailed);</script>';
             showmessage('success, jump to site', '', array('type' => 1), array('extrajs' => $js));
             die();
         }

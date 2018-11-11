@@ -34,9 +34,8 @@ class logging_duckchat {
             $referer = dreferer();
             $ucsynlogin = $this->setting['allowsynlogin'] ? uc_user_synlogin($_G['uid']) : '';
             $param = array('username' => $_G['member']['username'], 'usergroup' => $_G['group']['grouptitle'], 'uid' => $_G['member']['uid']);
-            showmessage('login_succeed', $referer ? $referer : './', $param, array('showdialog' => 1, 'locationtime' => true, 'extrajs' => $ucsynlogin));
-//            $url = $referer ? $referer : './';
-//            $this->jumpToSite($_G, "login_succeed", $url, $param, array('showdialog' => 1, 'locationtime' => true, 'extrajs' => $ucsynlogin));
+           $url = $referer ? $referer : './';
+           $this->jumpToSite($_G, "login_succeed", $url, $param, array('showdialog' => 1, 'locationtime' => true, 'extrajs' => $ucsynlogin));
         }
 
         $from_connect = $this->setting['connect']['allow'] && !empty($_GET['from']) ? 1 : 0;
@@ -209,7 +208,7 @@ class logging_duckchat {
     function jumpToSite($pressionId, $loginmessage, $location, $param, $extra) {
         $duckchatCookie = isset($_COOKIE['duckchat']) ? $_COOKIE['duckchat'] : "";
         if($duckchatCookie == "duckchat") {
-            $js = '<script type="text/javascript">function loginFailed(){zalyjsAlert("login failed");} zalyjsLoginSuccess("'.$param['username'].'", "'.$pressionId.'", true, loginFailed);</script>';
+            $js = '<script type="text/javascript">function loginFailed(){alert("login failed");} zalyjsLoginSuccess("'.$param['username'].'", "'.$pressionId.'", true, loginFailed);</script>';
             $extra = array(
                 'extrajs' => $js,
             );
@@ -848,7 +847,7 @@ class register_duckchat {
     function jumpToSite($pressionId, $loginmessage, $location, $param, $extra) {
         $duckchatCookie = isset($_COOKIE['duckchat']) ? $_COOKIE['duckchat'] : "";
         if($duckchatCookie == "duckchat") {
-            $js = '<script type="text/javascript">function loginFailed(){zalyjsAlert("login failed");} zalyjsLoginSuccess("'.$param['username'].'", "'.$pressionId.'", true, loginFailed);</script>';
+            $js = '<script type="text/javascript">function loginFailed(){alert("login failed");} zalyjsLoginSuccess("'.$param['username'].'", "'.$pressionId.'", true, loginFailed);</script>';
             $extra = array(
                 'extrajs' => $js,
                 'striptags' => false,

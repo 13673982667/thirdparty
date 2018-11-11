@@ -57,7 +57,7 @@ WQIDAQAB
 4. 小程序的登录校验地址
 	* 在config.php中session_verify_102下面添加
 	
-	 		 'session_verify_106' => 'http://192.168.3.152:8072/plugin.php?id=duckchat&action=api.session.verify&body_format=base64pb',
+	 		'session_verify_106' => 'http://192.168.3.152:8072/plugin.php?id=duckchat&action=api.session.verify&body_format=base64pb',
 	 
 	* 106 替换成自己的loginPluginId, 
 	* 地址替换成自己的真实地址
