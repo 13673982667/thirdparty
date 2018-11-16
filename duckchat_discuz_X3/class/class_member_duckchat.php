@@ -314,7 +314,7 @@ class logging_duckchat {
     function jumpToSite($_G, $loginmessage, $location, $param, $extra) {
         $duckchatCookie = isset($_COOKIE['duckchat']) ? $_COOKIE['duckchat'] : "";
         if($duckchatCookie == "duckchat") {
-            $js = '<script type="text/javascript">function loginFailed(){alert("login failed");} zalyjsLoginSuccess("'.$_G['username'].'", "'.$_G['sid'].'", true, loginFailed);</script>';
+            $js = '<script type="text/javascript">function loginFailed(){alert("login failed");} zalyjsLoginSuccess("'.$_G['username'].'", "'.$_G['sid'].'", true, '', loginFailed);</script>';
             showmessage('success, jump to site', '', array('type' => 1), array('extrajs' => $js));
             die();
         }
@@ -368,7 +368,7 @@ class register_duckchat {
     function jumpToSite($_G, $loginmessage, $location, $param, $extra) {
         $duckchatCookie = isset($_COOKIE['duckchat']) ? $_COOKIE['duckchat'] : "";
         if($duckchatCookie == "duckchat") {
-            $js = '<script type="text/javascript">function loginFailed(){alert("login failed");} zalyjsLoginSuccess("'.$_G['username'].'", "'.$_G['sid'].'", true, loginFailed);</script>';
+            $js = '<script type="text/javascript">function loginFailed(){alert("login failed");} zalyjsLoginSuccess("'.$_G['username'].'", "'.$_G['sid'].'", true, '', loginFailed);</script>';
             showmessage('success, jump to site', '', array('type' => 1), array('extrajs' => $js));
             die();
         }
